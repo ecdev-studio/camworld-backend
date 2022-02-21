@@ -14,10 +14,7 @@ const Highlight = require('./models/Highlight');
 const Review = require('./models/Review');
 const Spec = require('./models/Spec');
 const dotenv = require('dotenv');
-const categories = require('./data/categories');
-const products = require('./data/products');
-const taxonomies = require('./data/taxonomies');
-const subTaxonomies = require('./data/sub-taxonomies');
+const axios = require('axios');
 
 dotenv.config();
 
@@ -25,6 +22,7 @@ const sequelize = require('./utils/database');
 const {createSubTaxonomy, createTaxonomy} = require('./seed/taxonomy');
 const {createProduct} = require('./seed/product');
 const {createCategory} = require('./seed/category');
+const SEED_URL = process.env.SEED_URL;
 
 async function db() {
   try {
@@ -37,16 +35,24 @@ async function db() {
 db();
 const importData = async () => {
   try {
-    for await (let item of categories) {
+    // const categories = require('./data/categories');
+    // const products = require('./data/products');
+    // const taxonomies = require('./data/taxonomies');
+    // const subTaxonomies = require('./data/sub-taxonomies');
+    const categories = await axios.get(`${SEED_URL}/categories`)
+    const taxonomies = await axios.get(`${SEED_URL}/taxonomies`)
+    const subTaxonomies = await axios.get(`${SEED_URL}/sub-taxonomies`)
+    const products = await axios.get(`${SEED_URL}/products`)
+    for await (let item of categories.data) {
       await createCategory(item);
     }
-    for await (let item of taxonomies) {
+    for await (let item of taxonomies.data) {
       await createTaxonomy(item);
     }
-    for await (let item of subTaxonomies) {
+    for await (let item of subTaxonomies.data) {
       await createSubTaxonomy(item);
     }
-    for await (let item of products) {
+    for await (let item of products.data) {
       await createProduct(item);
     }
     console.log('Data Imported!');

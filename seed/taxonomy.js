@@ -9,7 +9,7 @@ const self = module.exports = {
     });
     if (dto.categories) {
       for await (let item of dto.categories) {
-        const category = await getCategory({name: item})
+        const category = await getCategory({name: item.name})
         category.addTaxonomy(taxonomy.id)
       }
     }
@@ -24,7 +24,7 @@ const self = module.exports = {
   },
 
   async createSubTaxonomy(dto) {
-    const taxonomy = await self.getTaxonomy({name: dto.taxonomy});
+    const taxonomy = await self.getTaxonomy({name: dto.taxonomy.name});
     return await SubTaxonomy.create({
       name: dto.name,
       taxonomyId: taxonomy.id,
@@ -32,11 +32,9 @@ const self = module.exports = {
   },
 
   async getSubTaxonomy(dto) {
-    const taxonomy = await self.getTaxonomy({name: dto.taxonomy})
     return await SubTaxonomy.findOne({
       where: {
         name: dto.name,
-        taxonomyId: taxonomy.id,
       },
     });
   },

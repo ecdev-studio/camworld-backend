@@ -1,5 +1,6 @@
 const Product = require('../../models/Product');
 const Review = require('../../models/Review');
+const {calcMiddleReviewValue} = require('../../utils/helpers');
 
 module.exports = {
   Mutation: {
@@ -27,21 +28,4 @@ module.exports = {
       }
     },
   },
-};
-
-const calcMiddleReviewValue = (reviews) => {
-  const ratingArray = [];
-  const ratingLength = reviews.length;
-
-  reviews.map(item => {
-    ratingArray.push(item.rating);
-  });
-
-  if (ratingArray.length !== 0) {
-    const allRatingValue = ratingArray.reduce((previousValue, currentValue) => {
-      return previousValue + currentValue;
-    });
-    return Math.ceil(allRatingValue / ratingLength);
-
-  }
 };
