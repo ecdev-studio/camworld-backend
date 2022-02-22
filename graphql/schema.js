@@ -127,6 +127,7 @@ module.exports = buildSchema(`
       message: String
       radioGroup: String
       token: String
+      key: String
    }
     
     type Query {

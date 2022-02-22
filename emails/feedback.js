@@ -11,8 +11,8 @@ module.exports = function (email) {
             <p><strong>From:</strong> ${email.name} ${email.email}</p>
             <p><strong>Current Website -</strong> ${email.website}</p>
             ${radio}
-            <hr />
             <p><strong>Message:</strong> ${email.message}</p>
+            <p><strong>Key:</strong> ${email.key}</p>
         `
   }
 }
