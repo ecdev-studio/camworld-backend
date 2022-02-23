@@ -28,7 +28,7 @@ const Product = sequelize.define('product', {
   },
   youtubeEmbed: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   price: {
     type: Sequelize.FLOAT,
