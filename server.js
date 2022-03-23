@@ -10,7 +10,7 @@ const uploadRoutes = require('./routes/uploadRoutes');
 
 (async () => {
   const contextMiddleware = require('./utils/contextMiddleware')
-  const PORT = process.env.PORT || 5555
+  const PORT = process.env.PORT || 5000
   const app = express();
   require('express-ws')(app);
   app.use(cors())
