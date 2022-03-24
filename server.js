@@ -6,11 +6,10 @@ const { SubscriptionServer } = require("subscriptions-transport-ws");
 const { makeExecutableSchema } = require("@graphql-tools/schema");
 const { ApolloServerPluginLandingPageDisabled } = require ("apollo-server-core");
 const cors = require('cors');
-const uploadRoutes = require('./routes/uploadRoutes');
 
 (async () => {
   const contextMiddleware = require('./utils/contextMiddleware')
-  const PORT = process.env.PORT || 5000
+  const PORT = 5000;
   const app = express();
   require('express-ws')(app);
   app.use(cors())
@@ -31,8 +30,6 @@ const uploadRoutes = require('./routes/uploadRoutes');
     introspection: true,
   });
 
-  app.use('/api/upload', uploadRoutes)
-
   await server.start();
   server.applyMiddleware({ app });
 
@@ -40,7 +37,6 @@ const uploadRoutes = require('./routes/uploadRoutes');
     { schema, execute, subscribe },
     { server: httpServer, path: server.graphqlPath }
   );
-
 
   httpServer.listen(PORT, () => {
     console.log(

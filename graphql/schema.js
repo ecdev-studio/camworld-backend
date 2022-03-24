@@ -122,6 +122,7 @@ module.exports = buildSchema(`
    
    input MailInput {
       name: String!
+      company: String
       email: String!
       website: String
       message: String
