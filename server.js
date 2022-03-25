@@ -22,6 +22,10 @@ const cors = require('cors');
 
   const schema = makeExecutableSchema({ typeDefs, resolvers });
 
+  app.get('/', (req, res) => {
+    res.status(200).send('API is running....');
+  })
+
   const server = new ApolloServer({
     schema,
     context: contextMiddleware,
