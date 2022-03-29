@@ -10,6 +10,9 @@ module.exports = {
     async getCategories(root) {
       try {
         return await Category.findAll({
+          order: [
+            ['id', 'ASC'],
+          ],
           include:[{
             all:true,
           }]
