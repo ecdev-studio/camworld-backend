@@ -388,7 +388,7 @@ const generateSlugProduct = async (str, slug) => {
   });
 
   if (result) {
-    return await self.generateProductSlug(str + Date.now(), slug);
+    return await generateSlugProduct(str + Date.now(), slug);
   } else {
     return slug + str;
   }

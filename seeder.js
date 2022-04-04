@@ -35,24 +35,24 @@ async function db() {
 db();
 const importData = async () => {
   try {
-    // const categories = require('./data/categories');
-    // const products = require('./data/products');
-    // const taxonomies = require('./data/taxonomies');
-    // const subTaxonomies = require('./data/sub-taxonomies');
-    const categories = await axios.get(`${SEED_URL}/categories`)
-    const taxonomies = await axios.get(`${SEED_URL}/taxonomies`)
-    const subTaxonomies = await axios.get(`${SEED_URL}/sub-taxonomies`)
-    const products = await axios.get(`${SEED_URL}/products`)
-    for await (let item of categories.data) {
+    const categories = require('./data/categories');
+    const products = require('./data/products');
+    const taxonomies = require('./data/taxonomies');
+    const subTaxonomies = require('./data/sub-taxonomies');
+    // const categories = await axios.get(`${SEED_URL}/categories`)
+    // const taxonomies = await axios.get(`${SEED_URL}/taxonomies`)
+    // const subTaxonomies = await axios.get(`${SEED_URL}/sub-taxonomies`)
+    // const products = await axios.get(`${SEED_URL}/products`)
+    for await (let item of categories) {
       await createCategory(item);
     }
-    for await (let item of taxonomies.data) {
+    for await (let item of taxonomies) {
       await createTaxonomy(item);
     }
-    for await (let item of subTaxonomies.data) {
+    for await (let item of subTaxonomies) {
       await createSubTaxonomy(item);
     }
-    for await (let item of products.data) {
+    for await (let item of products) {
       await createProduct(item);
     }
     console.log('Data Imported!');
