@@ -136,6 +136,7 @@ module.exports = buildSchema(`
       getCategories: [Category]
       getCategory(id: Int!): Category
       getProductById(id: Int!): Product
+      getProductBySlug(slug: String!): Product
       getMaxMinPrice(categoryId: Int!): MinMaxPrice
       getUser: User
     }

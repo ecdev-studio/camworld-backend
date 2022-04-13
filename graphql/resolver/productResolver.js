@@ -89,6 +89,22 @@ module.exports = {
         throw new Error(`Fetch product is not available. Error: ${e}`);
       }
     },
+    async getProductBySlug(root, {slug}) {
+      try {
+        return await Product.findOne({
+          where: {
+            slug,
+          },
+          include: [
+            {
+              all: true,
+            },
+          ],
+        });
+      } catch (e) {
+        throw new Error(`Fetch product is not available. Error: ${e}`);
+      }
+    },
     async getMaxMinPrice(root, {categoryId}) {
       try {
         const min = await Product.findOne({
