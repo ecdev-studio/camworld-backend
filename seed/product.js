@@ -17,7 +17,7 @@ const self = module.exports = {
     }
     const product = await Product.create({
       name: dto.name,
-      slug: await generateProductSlug(dto.name, '/product/'),
+      slug: await generateProductSlug(dto.name, ''),
       image: dto.image.url,
       sku: dto.sku,
       youtubeEmbed: dto.youtubeEmbed,
