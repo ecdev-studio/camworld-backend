@@ -169,7 +169,7 @@ phases:
             echo "Docker build context: $df_dir_path"
             echo "Docker build args: $build_args"
             echo "Logging in to Amazon ECR..."
-            aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com;
+        	aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com;
             echo "Running command: docker build -t $workload:$tag $build_args-f $df_path $df_dir_path";
             docker build -t $workload:$tag $build_args-f $df_path $df_dir_path;
             image_id=$(docker images -q $workload:$tag);

@@ -1,4 +1,4 @@
-FROM 868285727925.dkr.ecr.us-west-2.amazonaws.com/node:16-alpine3.12
+FROM 868285727925.dkr.ecr.us-west-1.amazonaws.com/node:16-alpine3.12
 
 WORKDIR /app
 
