@@ -36,7 +36,7 @@ exec: true     # Enable running commands in your container.
 # Optional fields for more advanced use-cases.
 #
 variables:
-  MAIL_FROM: ecdevstudiomail@gmail.com
+  MAIL_FROM: noreply@ecdevstage.com
   MAIL_TO: oleksandr.fesak@gmail.com
 
 #secrets:                      # Pass secrets from AWS Systems Manager (SSM) Parameter Store.
@@ -56,3 +56,5 @@ environments:
       AWS_ACCESS_KEY_ID: /copilot/${COPILOT_APPLICATION_NAME}/${COPILOT_ENVIRONMENT_NAME}/secrets/AWS_ACCESS_KEY_ID
       AWS_SECRET_ACCESS_KEY: /copilot/${COPILOT_APPLICATION_NAME}/${COPILOT_ENVIRONMENT_NAME}/secrets/AWS_SECRET_ACCESS_KEY
       AWS_REGION: /copilot/${COPILOT_APPLICATION_NAME}/${COPILOT_ENVIRONMENT_NAME}/secrets/AWS_REGION
+      SMTP_USER: /copilot/${COPILOT_APPLICATION_NAME}/${COPILOT_ENVIRONMENT_NAME}/secrets/SMTP_USER
+      SMTP_PASSWORD: /copilot/${COPILOT_APPLICATION_NAME}/${COPILOT_ENVIRONMENT_NAME}/secrets/SMTP_PASSWORD

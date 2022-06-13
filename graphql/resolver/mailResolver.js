@@ -21,8 +21,10 @@ module.exports = {
       });
       if (validateResult) {
         const ses = new aws.SES({
-          apiVersion: '2010-12-01',
-          region: 'us-east-1',
+          apiVersion: 'latest',
+          region: 'us-west-1',
+          accessKeyId: process.env.SMTP_USER,
+          secretAccessKey: process.env.SMTP_PASSWORD
         });
 
         const transporter = nodemailer.createTransport({
