@@ -32,13 +32,17 @@ module.exports = {
 					include: [
 						{
 							model: Taxonomy,
+							required: false,
 							include: [
 								{
 									model: SubTaxonomy,
+									required: false,
 									include: [
 										{
 											model: Product,
-											limit: 1,
+											where: {
+												categoryId: id
+											}
 										}
 									],
 								},
@@ -47,6 +51,7 @@ module.exports = {
 					],
 				});
 			} catch (e) {
+				console.log(e);
 				throw new Error('Fetch is not available');
 			}
 		},
