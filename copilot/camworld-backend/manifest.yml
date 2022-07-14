@@ -37,8 +37,8 @@ exec: true     # Enable running commands in your container.
 #
 variables:
   MAIL_FROM: noreply@ecdevstage.com
-#  MAIL_TO: oleksandr.fesak@gmail.com
-  MAIL_TO: lordaposs@gmail.com
+  MAIL_TO: oleksandr.fesak@gmail.com
+#  MAIL_TO: lordaposs@gmail.com
 
 #secrets:                      # Pass secrets from AWS Systems Manager (SSM) Parameter Store.
 #  GITHUB_TOKEN: GITHUB_TOKEN  # The key is the name of the environment variable, the value is the name of the SSM parameter.
