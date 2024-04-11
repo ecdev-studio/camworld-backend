@@ -4,12 +4,11 @@ const { execute, subscribe } = require("graphql");
 const { ApolloServer } = require("apollo-server-express");
 const { SubscriptionServer } = require("subscriptions-transport-ws");
 const { makeExecutableSchema } = require("@graphql-tools/schema");
-const { ApolloServerPluginLandingPageDisabled } = require ("apollo-server-core");
 const cors = require('cors');
 
 (async () => {
   const contextMiddleware = require('./utils/contextMiddleware')
-  const PORT = 5000;
+  const PORT = process.env.PORT ? process.env.PORT : 5559;
   const app = express();
   require('express-ws')(app);
   app.use(cors())
