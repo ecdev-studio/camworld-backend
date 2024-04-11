@@ -11,11 +11,7 @@ const sequelizeDB = new Sequelize(DB_NAME, USER_NAME, PASSWORD, {
   host: HOST,
   port: PORT,
   dialect: 'postgres',
-  // logging: console.log,
   logging: false,
-  maxConcurrentQueries: 100,
-  ssl: 'Amazon RDS',
-  pool: {maxConnections: 5, maxIdleTime: 300},
   language: 'en',
 });
 

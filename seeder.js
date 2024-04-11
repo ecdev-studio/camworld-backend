@@ -14,7 +14,6 @@ const Highlight = require('./models/Highlight');
 const Review = require('./models/Review');
 const Spec = require('./models/Spec');
 const dotenv = require('dotenv');
-const axios = require('axios');
 
 dotenv.config();
 
@@ -39,10 +38,6 @@ const importData = async () => {
     const products = require('./data/products');
     const taxonomies = require('./data/taxonomies');
     const subTaxonomies = require('./data/sub-taxonomies');
-    // const categories = await axios.get(`${SEED_URL}/categories`)
-    // const taxonomies = await axios.get(`${SEED_URL}/taxonomies`)
-    // const subTaxonomies = await axios.get(`${SEED_URL}/sub-taxonomies`)
-    // const products = await axios.get(`${SEED_URL}/products`)
     for await (let item of categories) {
       await createCategory(item);
     }

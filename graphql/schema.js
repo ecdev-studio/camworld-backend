@@ -1,4 +1,4 @@
-const {buildSchema} = require('graphql');
+const { buildSchema } = require('graphql')
 
 module.exports = buildSchema(` 
     type Product {
@@ -119,33 +119,21 @@ module.exports = buildSchema(`
       email: String!, 
       password: String, 
    }
-   
-   input MailInput {
-      name: String!
-      company: String
-      email: String!
-      website: String
-      message: String
-      radioGroup: String
-      token: String
-      key: String
-   }
     
-    type Query {
-      getProducts(categoryId: Int, subTaxonomy: [Int], limit: Int, offset: Int, sort: sortItem): CountProd
-      getCategories: [Category]
-      getCategory(id: Int!): Category
-      getProductById(id: Int!): Product
-      getProductBySlug(slug: String!): Product
-      getMaxMinPrice(categoryId: Int!): MinMaxPrice
-      getUser: User
-    }
-    
-    type Mutation {
-      addReview(data: ReviewInput!): Review
-      sendMail(data: MailInput!): String
-      registerUser(data: UserInput!): User
-      loginUser(data: UserInput!): User
-      updateUser(data: UserInput!): User
-    }
-`);
+	 type Query {
+	    getProducts(categoryId: Int, subTaxonomy: [Int], limit: Int, offset: Int, sort: sortItem): CountProd
+	    getCategories: [Category]
+	    getCategory(id: Int!): Category
+	    getProductById(id: Int!): Product
+	    getProductBySlug(slug: String!): Product
+	    getMaxMinPrice(categoryId: Int!): MinMaxPrice
+	    getUser: User
+	 }
+	  
+	 type Mutation {
+	    addReview(data: ReviewInput!): Review
+	    registerUser(data: UserInput!): User
+	    loginUser(data: UserInput!): User
+	    updateUser(data: UserInput!): User
+	 }
+`)

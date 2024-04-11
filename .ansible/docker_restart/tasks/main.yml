@@ -1,0 +1,27 @@
+- name: Build Docker image
+  community.docker.docker_image:
+    name: backend-camworld
+    state: present
+    force_source: yes
+    source: build
+    build:
+      path: "{{ dir }}"
+      dockerfile: Dockerfile
+
+- name: Restart Docker container
+  community.docker.docker_container:
+    name: backend-camworld
+    image: backend-camworld
+    restart: yes
+    recreate: yes
+    ports:
+      - "5559:5559"
+    env:
+      NODE_ENV: "production"
+      JWT_SECRET: "abc123123qwedqwdsaSADE@ew2w321"
+      PORT: "5559"
+      DB_PORT: "5432"
+      DB_HOST: "{{ DB_HOST }}"
+      DB_USER: "{{ DB_USER }}"
+      DB_PASS: "{{ DB_PASS }}"
+      DB_NAME: "{{ DB_NAME }}"
