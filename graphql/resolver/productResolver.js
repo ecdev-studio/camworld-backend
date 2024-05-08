@@ -70,7 +70,8 @@ module.exports = {
           distinct: true,
         });
       } catch (e) {
-        throw new Error('Fetch products is not available');
+        console.log(e);
+        throw new Error(`Fetch products is not available: ${e}`);
       }
     },
     async getProductById(root, {id}) {
@@ -139,7 +140,8 @@ module.exports = {
           max: max.price,
         };
       } catch (e) {
-        throw new Error('Fetch is not available');
+        console.log(e);
+        throw new Error(`Fetch is not available: ${e}`);
       }
     },
   },

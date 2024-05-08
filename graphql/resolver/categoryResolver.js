@@ -19,7 +19,8 @@ module.exports = {
 						}],
 				});
 			} catch (e) {
-				throw new Error('Fetch is not available');
+				console.log(e);
+				throw new Error(`Fetch is not available: ${e}`);
 			}
 		},
 
@@ -52,7 +53,7 @@ module.exports = {
 				});
 			} catch (e) {
 				console.log(e);
-				throw new Error('Fetch is not available');
+				throw new Error(`Fetch is not available: ${e}`);
 			}
 		},
 	},

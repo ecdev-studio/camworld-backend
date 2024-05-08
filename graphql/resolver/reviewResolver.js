@@ -24,7 +24,8 @@ module.exports = {
         await product.save();
         return review;
       } catch (e) {
-        throw new Error('Something went wrong, please try again later');
+        console.log(e);
+        throw new Error(`Fetch is not available: ${e}`);
       }
     },
   },
